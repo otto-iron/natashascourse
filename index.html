@@ -1,0 +1,439 @@
+import { useState } from 'react';
+
+export default function AlbaLearningPlan() {
+  const [activeWeek, setActiveWeek] = useState(1);
+  const [view, setView] = useState('timeline');
+
+  const weeks = [
+    {
+      week: 1,
+      theme: "FOUNDATIONS & VOICE DISCOVERY",
+      focus: "Establishing baseline, identifying patterns",
+      sessions: [
+        {
+          title: "Session 1: The Voice Audit",
+          activities: [
+            "Free-write exercise (10 min): 'What do I want to say in English that I can't yet?'",
+            "Spoken assessment: Alba describes her business journey",
+            "Grammar diagnostic through natural conversation",
+            "Introduction to journaling practice"
+          ],
+          homework: "Daily micro-journal: 3 sentences about your day (imperfect is perfect)",
+          literature: null
+        },
+        {
+          title: "Session 2: Grammar as Architecture",
+          activities: [
+            "Review journal entries together—identify recurring patterns",
+            "Focus: Present tense vs Present continuous (Italian interference patterns)",
+            "Practice: Describing what you DO vs what you're DOING now",
+            "First poetry encounter: Anne Sexton's 'Courage'"
+          ],
+          homework: "Write a 'courage inventory'—moments you've been brave in business",
+          literature: "Anne Sexton - 'Courage'"
+        }
+      ]
+    },
+    {
+      week: 2,
+      theme: "PAST NARRATIVES",
+      focus: "Telling your story with grammatical precision",
+      sessions: [
+        {
+          title: "Session 3: The Past That Shaped You",
+          activities: [
+            "Grammar deep-dive: Simple Past vs Present Perfect",
+            "Italian vs English: Why 'I have done' differs between languages",
+            "Script work: 'My journey to becoming a business owner'",
+            "Recording practice: 2-minute spoken version"
+          ],
+          homework: "Write your business origin story (300 words)",
+          literature: null
+        },
+        {
+          title: "Session 4: Kafka's Questions",
+          activities: [
+            "Read excerpt from Kafka's 'Letter to His Father' (translated)",
+            "Discussion: Authority, self-doubt, finding voice despite obstacles",
+            "Grammar in context: Past continuous for atmosphere/background",
+            "Journal prompt: 'A letter to my past self about starting my business'"
+          ],
+          homework: "Complete the letter (focus on past tenses)",
+          literature: "Franz Kafka - 'Letter to His Father' (excerpt)"
+        }
+      ]
+    },
+    {
+      week: 3,
+      theme: "CONDITIONAL REALITIES",
+      focus: "Expressing possibility, dreams, hypotheticals",
+      sessions: [
+        {
+          title: "Session 5: If/Then: The Grammar of Dreams",
+          activities: [
+            "Conditionals breakdown: Zero, First, Second (most useful for business)",
+            "Practice: 'If I expand to English markets...' scenarios",
+            "Script development: Future vision for your work",
+            "Public speaking technique: The power of the pause"
+          ],
+          homework: "Write 10 'If...then' statements about your professional future",
+          literature: null
+        },
+        {
+          title: "Session 6: Rumi & Longing",
+          activities: [
+            "Introduction to Rumi: 'The Guest House'",
+            "Discussion: Welcoming all emotions, Arabic/Persian wisdom tradition",
+            "Grammar in poetry: How conditionals create metaphor",
+            "Free-write: 'What I would do if fear didn't exist'"
+          ],
+          homework: "Find a Rumi quote that resonates—write a personal response",
+          literature: "Rumi - 'The Guest House'"
+        }
+      ]
+    },
+    {
+      week: 4,
+      theme: "THE ASSERTIVE VOICE",
+      focus: "Modal verbs, giving opinions, professional authority",
+      sessions: [
+        {
+          title: "Session 7: Speaking With Authority",
+          activities: [
+            "Modal verbs masterclass: should/would/could/must/might",
+            "The difference between 'You should...' and 'You could...'",
+            "Script: Giving advice in your area of expertise",
+            "Recording: 3-minute 'expert tip' video script"
+          ],
+          homework: "Record yourself giving a business tip (audio only)",
+          literature: null
+        },
+        {
+          title: "Session 8: Sexton's Rebellion",
+          activities: [
+            "Anne Sexton: 'Her Kind' - the outsider's power",
+            "Discussion: Being a woman in business, claiming space",
+            "Journal: 'I have been her kind...' personal version",
+            "Grammar: Using modals to soften OR strengthen statements"
+          ],
+          homework: "Write your own 'Her Kind' stanza about your professional identity",
+          literature: "Anne Sexton - 'Her Kind'"
+        }
+      ]
+    },
+    {
+      week: 5,
+      theme: "COMPLEX STRUCTURES",
+      focus: "Relative clauses, complex sentences, sophisticated expression",
+      sessions: [
+        {
+          title: "Session 9: Elegant Complexity",
+          activities: [
+            "Relative clauses: who/which/that/whose/where",
+            "Combining short sentences into sophisticated ones",
+            "Practice: Describing people, places, concepts in your field",
+            "Script refinement: Adding complexity to previous pieces"
+          ],
+          homework: "Rewrite your business story using at least 5 relative clauses",
+          literature: null
+        },
+        {
+          title: "Session 10: Kafka's Metamorphosis",
+          activities: [
+            "Opening of 'The Metamorphosis' - sentence structure analysis",
+            "Discussion: Transformation, alienation, the absurd",
+            "Grammar in literature: How complex sentences create mood",
+            "Journal: 'A transformation I've undergone'"
+          ],
+          homework: "Write about a professional transformation (complex sentences)",
+          literature: "Franz Kafka - 'The Metamorphosis' (opening)"
+        }
+      ]
+    },
+    {
+      week: 6,
+      theme: "SPIRITUAL & PHILOSOPHICAL VOICE",
+      focus: "Abstract concepts, Islamic wisdom, depth of expression",
+      sessions: [
+        {
+          title: "Session 11: Speaking the Unspeakable",
+          activities: [
+            "Vocabulary for abstract concepts: faith, purpose, meaning",
+            "Grammar: Present perfect continuous for ongoing journeys",
+            "Discussion: How to express spiritual ideas in English",
+            "Script: Your 'why'—the deeper purpose behind your work"
+          ],
+          homework: "Write about a spiritual or philosophical influence on your work",
+          literature: null
+        },
+        {
+          title: "Session 12: Islamic Wisdom Traditions",
+          activities: [
+            "Hadith excerpts and Sufi poetry introduction",
+            "Discussion: Patience (sabr), trust (tawakkul), intention (niyyah)",
+            "Grammar: Articles with abstract nouns (the/a/zero article)",
+            "Journal: How these concepts appear in your business philosophy"
+          ],
+          homework: "Find an Islamic quote/teaching that guides you—write a reflection",
+          literature: "Selected Hadith & Sufi Poetry (Hafiz, Ibn Arabi)"
+        }
+      ]
+    },
+    {
+      week: 7,
+      theme: "PUBLIC SPEAKING INTENSIVE",
+      focus: "Presentation skills, Q&A handling, confidence",
+      sessions: [
+        {
+          title: "Session 13: The 5-Minute Talk",
+          activities: [
+            "Structure: Hook, Problem, Solution, Story, Call to Action",
+            "Grammar for presentations: Signposting language",
+            "Draft your signature 5-minute talk",
+            "Practice delivery with feedback"
+          ],
+          homework: "Memorize your opening 30 seconds",
+          literature: null
+        },
+        {
+          title: "Session 14: Handling the Unexpected",
+          activities: [
+            "Q&A simulation: Answering questions you don't expect",
+            "Grammar: Hedging language ('It seems...', 'I'd say...')",
+            "Sexton's vulnerability: 'Live or Die' excerpts",
+            "Practice: Authentic responses under pressure"
+          ],
+          homework: "Record full 5-minute talk + imagine 3 tough questions",
+          literature: "Anne Sexton - from 'Live or Die'"
+        }
+      ]
+    },
+    {
+      week: 8,
+      theme: "INTEGRATION & LAUNCH",
+      focus: "Bringing it all together, content creation ready",
+      sessions: [
+        {
+          title: "Session 15: The Content Creator's Toolkit",
+          activities: [
+            "Review all scripts developed across 8 weeks",
+            "Edit and polish for online sharing",
+            "Grammar review: Top 5 patterns we've corrected",
+            "Confidence calibration: Recording comparison Week 1 vs Week 8"
+          ],
+          homework: "Finalize one piece of content for sharing",
+          literature: null
+        },
+        {
+          title: "Session 16: Alba Speaks",
+          activities: [
+            "Final presentation: Alba delivers her signature talk",
+            "Celebration of growth",
+            "Creating a continued learning plan",
+            "Journal: 'What English has unlocked for me'"
+          ],
+          homework: "Share your first piece of English content publicly!",
+          literature: "Alba's own writing from the journey"
+        }
+      ]
+    }
+  ];
+
+  const literaryWorks = [
+    { author: "Anne Sexton", work: "'Courage'", week: 1, theme: "Finding bravery in voice" },
+    { author: "Franz Kafka", work: "'Letter to His Father'", week: 2, theme: "Authority and self-expression" },
+    { author: "Rumi", work: "'The Guest House'", week: 3, theme: "Welcoming all parts of self" },
+    { author: "Anne Sexton", work: "'Her Kind'", week: 4, theme: "Claiming outsider power" },
+    { author: "Franz Kafka", work: "'The Metamorphosis'", week: 5, theme: "Transformation and language" },
+    { author: "Islamic Texts", work: "Hadith & Sufi Poetry", week: 6, theme: "Spiritual vocabulary" },
+    { author: "Anne Sexton", work: "'Live or Die'", week: 7, theme: "Vulnerability in public" }
+  ];
+
+  const grammarFocus = [
+    { topic: "Present Simple vs Continuous", week: 1, application: "Describing routines vs current actions" },
+    { topic: "Simple Past vs Present Perfect", week: 2, application: "Telling your story" },
+    { topic: "Conditionals (0, 1, 2)", week: 3, application: "Future planning, hypotheticals" },
+    { topic: "Modal Verbs", week: 4, application: "Authority, advice, possibility" },
+    { topic: "Relative Clauses", week: 5, application: "Complex, sophisticated sentences" },
+    { topic: "Articles with Abstract Nouns", week: 6, application: "Philosophical expression" },
+    { topic: "Hedging & Signposting", week: 7, application: "Professional presentations" },
+    { topic: "Integration & Polish", week: 8, application: "Fluent, confident delivery" }
+  ];
+
+  const currentWeek = weeks[activeWeek - 1];
+
+  return (
+    <div className="min-h-screen p-6" style={{ backgroundColor: '#F5F0E8' }}>
+      <header className="max-w-5xl mx-auto mb-8">
+        <p className="font-mono text-xs tracking-widest mb-2" style={{ color: '#E85D04' }}>8-WEEK ENGLISH JOURNEY</p>
+        <h1 className="text-4xl font-black" style={{ color: '#1a1a1a' }}>ALBA'S VOICE</h1>
+        <p className="mt-2" style={{ color: '#7B6F63' }}>From grammar to authentic expression. Twice weekly. 16 sessions.</p>
+      </header>
+
+      <div className="max-w-5xl mx-auto mb-8 flex gap-4">
+        {['timeline', 'literature', 'grammar'].map(v => (
+          <button
+            key={v}
+            onClick={() => setView(v)}
+            className="px-4 py-2 text-sm font-mono transition-all"
+            style={{ 
+              backgroundColor: view === v ? '#E85D04' : 'rgba(139, 92, 246, 0.15)',
+              color: view === v ? 'white' : '#7C3AED'
+            }}
+          >
+            {v.toUpperCase()}
+          </button>
+        ))}
+      </div>
+
+      {view === 'timeline' && (
+        <div className="max-w-5xl mx-auto">
+          <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
+            {weeks.map((w, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveWeek(i + 1)}
+                className="px-4 py-2 text-sm font-mono whitespace-nowrap transition-all"
+                style={{ 
+                  backgroundColor: activeWeek === i + 1 ? '#EC4899' : 'rgba(236, 72, 153, 0.15)',
+                  color: activeWeek === i + 1 ? 'white' : '#BE185D'
+                }}
+              >
+                WEEK {i + 1}
+              </button>
+            ))}
+          </div>
+
+          <div className="p-6 rounded-lg" style={{ backgroundColor: 'rgba(124, 58, 237, 0.08)' }}>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="text-6xl font-black" style={{ color: '#E85D04' }}>{String(activeWeek).padStart(2, '0')}</span>
+              <div>
+                <h2 className="text-2xl font-bold" style={{ color: '#1a1a1a' }}>{currentWeek.theme}</h2>
+                <p style={{ color: '#7B6F63' }}>{currentWeek.focus}</p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {currentWeek.sessions.map((session, i) => (
+                <div key={i} className="p-5 rounded" style={{ backgroundColor: 'rgba(245, 240, 232, 0.9)' }}>
+                  <h3 className="font-bold mb-3" style={{ color: '#7C3AED' }}>{session.title}</h3>
+                  <div className="space-y-2 mb-4">
+                    {session.activities.map((activity, j) => (
+                      <p key={j} className="text-sm pl-3" style={{ color: '#4a4a4a', borderLeft: '2px solid #EC4899' }}>
+                        {activity}
+                      </p>
+                    ))}
+                  </div>
+                  {session.literature && (
+                    <p className="text-xs mb-2" style={{ color: '#7C3AED' }}>
+                      📚 {session.literature}
+                    </p>
+                  )}
+                  <div className="mt-4 pt-3" style={{ borderTop: '1px solid rgba(124, 58, 237, 0.2)' }}>
+                    <p className="text-xs uppercase tracking-wide mb-1" style={{ color: '#9CA3AF' }}>Homework</p>
+                    <p className="text-sm" style={{ color: '#6B7280' }}>{session.homework}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {view === 'literature' && (
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6" style={{ color: '#1a1a1a' }}>LITERARY JOURNEY</h2>
+          <p className="mb-8" style={{ color: '#7B6F63' }}>Poetry and prose as vehicles for language acquisition and authentic voice development.</p>
+          
+          <div className="space-y-4">
+            {literaryWorks.map((lit, i) => (
+              <div 
+                key={i}
+                className="p-5 rounded-lg flex items-center gap-6 cursor-pointer transition-all hover:shadow-md"
+                style={{ backgroundColor: 'rgba(236, 72, 153, 0.08)' }}
+                onClick={() => { setActiveWeek(lit.week); setView('timeline'); }}
+              >
+                <span className="text-3xl font-black" style={{ color: 'rgba(232, 93, 4, 0.3)' }}>W{lit.week}</span>
+                <div className="flex-1">
+                  <p className="font-bold" style={{ color: '#1a1a1a' }}>{lit.author}</p>
+                  <p style={{ color: '#EC4899' }}>{lit.work}</p>
+                </div>
+                <p className="text-sm text-right max-w-xs" style={{ color: '#7B6F63' }}>{lit.theme}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 p-6 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%)' }}>
+            <h3 className="font-bold text-lg mb-4" style={{ color: '#1a1a1a' }}>WHY THIS LITERATURE?</h3>
+            <div className="grid md:grid-cols-3 gap-4 text-sm">
+              <div>
+                <p className="font-bold mb-2" style={{ color: '#EC4899' }}>Anne Sexton</p>
+                <p style={{ color: '#4a4a4a' }}>Confessional poetry that models vulnerability, personal narrative, and claiming space as a woman.</p>
+              </div>
+              <div>
+                <p className="font-bold mb-2" style={{ color: '#7C3AED' }}>Franz Kafka</p>
+                <p style={{ color: '#4a4a4a' }}>Complex sentences, existential themes. Perfect for understanding sophisticated English structure.</p>
+              </div>
+              <div>
+                <p className="font-bold mb-2" style={{ color: '#E85D04' }}>Islamic & Sufi Texts</p>
+                <p style={{ color: '#4a4a4a' }}>Alba's interest in Islam meets English vocabulary for spiritual and philosophical expression.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {view === 'grammar' && (
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6" style={{ color: '#1a1a1a' }}>GRAMMAR ARCHITECTURE</h2>
+          <p className="mb-8" style={{ color: '#7B6F63' }}>Building blocks arranged for Italian speakers—addressing common interference patterns.</p>
+          
+          <div className="grid md:grid-cols-2 gap-4">
+            {grammarFocus.map((g, i) => (
+              <div 
+                key={i}
+                className="p-5 rounded-lg cursor-pointer transition-all hover:shadow-md"
+                style={{ backgroundColor: 'rgba(232, 93, 4, 0.08)' }}
+                onClick={() => { setActiveWeek(g.week); setView('timeline'); }}
+              >
+                <div className="flex justify-between items-start mb-3">
+                  <span className="font-mono text-sm" style={{ color: '#EC4899' }}>WEEK {g.week}</span>
+                </div>
+                <h3 className="font-bold text-lg mb-2" style={{ color: '#1a1a1a' }}>{g.topic}</h3>
+                <p className="text-sm" style={{ color: '#7B6F63' }}>{g.application}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 p-6 rounded-lg" style={{ backgroundColor: 'rgba(236, 72, 153, 0.1)', border: '1px solid rgba(236, 72, 153, 0.3)' }}>
+            <h3 className="font-bold mb-4" style={{ color: '#BE185D' }}>ITALIAN → ENGLISH: KEY PATTERNS TO CORRECT</h3>
+            <div className="grid md:grid-cols-2 gap-4 text-sm">
+              <div className="space-y-3">
+                <p style={{ color: '#4a4a4a' }}><span style={{ color: '#DC2626' }}>✗</span> "I work here since 5 years"</p>
+                <p style={{ color: '#4a4a4a' }}><span style={{ color: '#16A34A' }}>✓</span> "I've worked here for 5 years"</p>
+              </div>
+              <div className="space-y-3">
+                <p style={{ color: '#4a4a4a' }}><span style={{ color: '#DC2626' }}>✗</span> "I am agreeing with you"</p>
+                <p style={{ color: '#4a4a4a' }}><span style={{ color: '#16A34A' }}>✓</span> "I agree with you"</p>
+              </div>
+              <div className="space-y-3">
+                <p style={{ color: '#4a4a4a' }}><span style={{ color: '#DC2626' }}>✗</span> "The people is happy"</p>
+                <p style={{ color: '#4a4a4a' }}><span style={{ color: '#16A34A' }}>✓</span> "The people are happy"</p>
+              </div>
+              <div className="space-y-3">
+                <p style={{ color: '#4a4a4a' }}><span style={{ color: '#DC2626' }}>✗</span> "I have 30 years"</p>
+                <p style={{ color: '#4a4a4a' }}><span style={{ color: '#16A34A' }}>✓</span> "I am 30 years old"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <footer className="max-w-5xl mx-auto mt-16 pt-8 text-center" style={{ borderTop: '1px solid rgba(124, 58, 237, 0.2)' }}>
+        <p className="text-sm" style={{ color: '#9CA3AF' }}>
+          Designed for Alba | 16 sessions | Grammar + Literature + Public Speaking + Authentic Voice
+        </p>
+      </footer>
+    </div>
+  );
+}
